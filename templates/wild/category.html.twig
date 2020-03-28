@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'catégorie' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for program in programs %}
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ program.poster }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ program.id }}/{{ program.title }}</h5>
+                            <p class="card-text">{{ program.summary }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
