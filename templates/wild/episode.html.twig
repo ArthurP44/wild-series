@@ -1,0 +1,20 @@
+{% extends'base.html.twig' %}
+
+{% block title 'Épisode' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <h4>La série : {{ program.title }} </h4>
+            <h5>description : {{ program.summary }}</h5>
+        </div>
+
+        <div class="row">
+            <h4>Épisode n° {{ episode.number }} - {{ episode.title }} </h4>
+            <h5>résumé : {{ episode.synopsis }}</h5>
+        </div>
+        <a href="{{ path('show_season', {'id': season.id}) }}">Lien vers la saison</a>
+        <br>
+        <a href="{{ path('app_index') }}">Lien vers l'index</a>
+    </div>
+{% endblock %}
