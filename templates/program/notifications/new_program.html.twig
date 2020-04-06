@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bonjour {{ email.toName }}!</h1>
+    <h4>La nouvelle série {{ program.title }} est disponible sur le site !!</h4>
+
+    pour la voir c'est <a href="{{ url("program_show", {'slug': program.slug}) }}">ici</a>
+{% endblock %}
