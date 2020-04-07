@@ -59,6 +59,7 @@ class EpisodeController extends AbstractController
     {
         return $this->render('episode/show.html.twig', [
             'episode' => $episode,
+            'comments' => $episode->getComments()
         ]);
     }
 

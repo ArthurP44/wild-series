@@ -26,9 +26,24 @@
             </tr>
             </tbody>
         </table>
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="btn btn-primary mb-4"> Laisser un commentaire</div>
+            <a class="btn btn-primary mb-4" href="{{ path('comment_new') }}"> Laisser un commentaire</a>
         {% endif %}
+
+        <div class ="container">
+            <h4>Commentaires :</h4>
+            {% for comment in comments %}
+                <div class="col-md-5">
+                    <div class="card">
+                        <h5>"{{ comment.comment }}"</h5>
+                        <h5>Note : {{ comment.rate }}/5</h5>
+                        <h6>Par : {{ comment.author.email }} </h6>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
         {#COMMENTAIRES#}
         {#    <div class="container">#}
         {#        <h2>Commentaires : </h2>#}
