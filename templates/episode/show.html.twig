@@ -35,11 +35,13 @@
             <h4>Commentaires :</h4>
             {% for comment in comments %}
                 <div class="col-md-5">
+                    <a href="{{ path('comment_show', {'id': comment.id}) }}">
                     <div class="card">
                         <h5>"{{ comment.comment }}"</h5>
                         <h5>Note : {{ comment.rate }}/5</h5>
                         <h6>Par : {{ comment.author.email }} </h6>
                     </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
