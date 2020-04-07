@@ -3,10 +3,11 @@
 {% block title %}Episode{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
+    <div class="container mt-5">
+        <h1>Episode</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ episode.id }}</td>
@@ -23,27 +24,34 @@
                 <th>Synopsis</th>
                 <td>{{ episode.synopsis }}</td>
             </tr>
-        </tbody>
-    </table>
-    {#COMMENTAIRES#}
-{#    <div class="container">#}
-{#        <h2>Commentaires : </h2>#}
-{#        {% for comment in comments %}#}
-{#            <div class="col-md-4">#}
-{#                <div class="card">#}
-{#                    <h4>Note : {{ comment.rate }}/5</h4>#}
+            </tbody>
+        </table>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="btn btn-primary mb-4"> Laisser un commentaire</div>
+        {% endif %}
+        {#COMMENTAIRES#}
+        {#    <div class="container">#}
+        {#        <h2>Commentaires : </h2>#}
+        {#        {% for comment in comments %}#}
+        {#            <div class="col-md-4">#}
+        {#                <div class="card">#}
+        {#                    <h4>Note : {{ comment.rate }}/5</h4>#}
 
-{#                    "{{ comment.comment }}"#}
-{#                    <h5>Par : {{ comment.author.email }}</h5>#}
-{#                    <br>#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#    </div>#}
+        {#                    "{{ comment.comment }}"#}
+        {#                    <h5>Par : {{ comment.author.email }}</h5>#}
+        {#                    <br>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        {% endfor %}#}
+        {#    </div>#}
+        <br>
 
-    <a href="{{ path('episode_index') }}">back to list</a>
+        <a href="{{ path('episode_index') }}">back to list</a>
 
-    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+        {% if app.user and is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+        {% endif %}
 
-    {{ include('episode/_delete_form.html.twig') }}
+        {{ include('episode/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

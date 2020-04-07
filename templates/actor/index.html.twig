@@ -3,33 +3,38 @@
 {% block title %}Actor index{% endblock %}
 
 {% block body %}
-    <h1>Actor index</h1>
+    <div class="container mt-5">
+        <h1>Actor index</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for actor in actors %}
-            <tr>
-                <td>{{ actor.id }}</td>
-                <td>{{ actor.name }}</td>
-                <td>
-                    <a href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
-                    <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('actor_new') }}">Create new</a>
+            </thead>
+            <tbody>
+            {% for actor in actors %}
+                <tr>
+                    <td>{{ actor.id }}</td>
+                    <td>{{ actor.name }}</td>
+                    <td>
+                        <a href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
+                        {% if app.user and is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if app.user and is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('actor_new') }}">Create new</a>
+        {% endif %}
+    </div>
 {% endblock %}
