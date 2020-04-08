@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'mon compte' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2>Mon Compte : {{ email }}</h2>
+        <br>
+        <h2>Mes commentaires : </h2>
+        {% for comment in comments %}
+            <div class="card">
+                <h4>Nom de l'épisode : {{ comment.episode.title }} </h4>
+                <h4>Note : {{ comment.rate }}/5 </h4>
+                <h4>Avis : "{{ comment.comment }}" </h4>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
