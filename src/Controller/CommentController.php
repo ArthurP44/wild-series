@@ -30,7 +30,7 @@ class CommentController extends AbstractController
 
     /**
      * @Route("/new", name="comment_new", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_SUBSCRIBER")
      */
     public function new(Request $request): Response
     {
