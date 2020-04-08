@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @UniqueEntity("title", message="Ce titre existe déjà")
  */
 class Program
 {
@@ -20,11 +23,15 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
+     * @Assert\Length(max="255", maxMessage="wallah c'est trop long comme titre frère.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
+     * @Assert\Regex(pattern="/^plus belle la vie/", message="merci de ne citer que des séries dont le QI total des acteurs dépasse celui d'une huitre")
      */
     private $summary;
 
