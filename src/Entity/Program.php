@@ -31,7 +31,6 @@ class Program
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="veuillez remplir ce champ")
-     * @Assert\Regex(pattern="/^plus belle la vie/", message="merci de ne citer que des séries dont le QI total des acteurs dépasse celui d'une huitre")
      */
     private $summary;
 
