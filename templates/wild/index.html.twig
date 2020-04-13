@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container mt-5 mb-4">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <h1>Bienvenue {{ app.user.email }} !</h1>
+                <h1>{{ 'welcome.message'|trans }} {{ app.user.email }}</h1>
         {% endif %}
     </div>
     <div class="container">

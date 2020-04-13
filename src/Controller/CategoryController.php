@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,5 +42,15 @@ class CategoryController extends AbstractController
         return $this->render('category/add_category.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    // controller embed in navbar to show category in dropdown
+
+    public function listCategories(CategoryRepository $repository)
+    {
+        return $this->render('category/_list.html.twig', [
+            'categories' => $repository->findAll()
+        ]);
+
     }
 }

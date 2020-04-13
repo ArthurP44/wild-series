@@ -16,3 +16,5 @@ framework:
         log: true
 
     validation: { enable_annotations: true }
+
+    fragments: { path: /_fragment }

@@ -10,7 +10,7 @@
                 <a class="nav-link btn btn-outline-primary text-white mr-2" href="{{ path('program_index') }}">Séries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-outline-primary text-white mr-2" href="{{ path('category') }}">Catégories</a>
+                {{ render(controller('App\\Controller\\CategoryController::listCategories')) }}
             </li>
             <li class="nav-item">
                 <a class="nav-link btn btn-outline-primary text-white mr-2" href="{{ path('season_index') }}">Saisons</a>
@@ -26,11 +26,11 @@
                     <a class="nav-link btn btn-outline-warning text-white mr-2" href="{{ path('account') }}">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-danger text-white mr-2" href="{{ path('app_logout') }}"> Se déconnecter</a>
+                    <a class="nav-link btn btn-outline-danger text-white mr-2" href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-success text-white mr-2" href="{{ path('app_login') }}"> Se connecter</a>
+                    <a class="nav-link btn btn-outline-success text-white mr-2" href="{{ path('app_login') }}">{{ 'account.login'|trans }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn btn-outline-warning text-white mr-2" href="{{ path('app_register') }}">S'inscrire</a>
